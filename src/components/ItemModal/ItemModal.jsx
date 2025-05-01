@@ -1,44 +1,36 @@
+import React from "react";
 import "./ItemModal.css";
-import closeButton from "../../assets/Union.png";
-import useModalClose from "../../hooks/useModalClose.js";
-import { useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
+import closeIcon from "../../assets/close-button.png";
 
-function ItemModal({ activeModal, card, closeActiveModal, onDelete }) {
-  useModalClose(activeModal === "preview", closeActiveModal);
-  const { currentUser } = useContext(CurrentUserContext) || {};
-
-  const isOwn =
-    currentUser && card && card.owner ? card.owner === currentUser._id : true; // TEMP: always show delete for now
+function ItemModal({ item, onClose }) {
+  if (!item) return null;
 
   return (
-    <div className={`modal ${activeModal === "preview" ? "modal_opened" : ""}`}>
-      <div className="modal__content modal__content_type_image">
+    <div className="modal">
+      <div className="modal__overlay" onClick={onClose}></div>
+
+      <div className="modal__item-content">
         <button
-          type="button"
-          onClick={closeActiveModal}
           className="modal__close"
-        ></button>
+          onClick={onClose}
+          aria-label="Close item modal"
+        >
+          <img src={closeIcon} alt="Close" className="modal__close-icon" />
+        </button>
 
-        <img src={card.imageUrl} alt={card.name} className="modal__image" />
+        <img
+          src={item.link}
+          alt={item.name}
+          className="modal__item-image"
+          onError={(e) => {
+            e.target.src = "/fallback.jpg";
+            e.target.alt = "Image failed to load";
+          }}
+        />
 
-        <div className="modal__footer">
-          <div className="modal__footer-top">
-            <h2 className="modal__caption">{card.name}</h2>
-            {isOwn && (
-              <button
-                type="button"
-                className="modal__delete-button"
-                onClick={() => {
-                  closeActiveModal();
-                  onDelete(card);
-                }}
-              >
-                Delete item
-              </button>
-            )}
-          </div>
-          <p className="modal__weather">Weather: {card.weather}</p>
+        <div className="modal__item-info">
+          <p className="modal__item-name">{item.name}</p>
+          <p className="modal__item-weather">Weather: {item.weather}</p>
         </div>
       </div>
     </div>

@@ -1,55 +1,110 @@
 .header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 40px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
 }
 
 .header__left {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
+}
+
+.header__logo {
+  width: 89px;
+  height: 40px;
+  margin-top: 11px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.header__center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  margin-top: 11px;
+  margin-bottom: 5px;
+}
+
+.header__date,
+.header__location {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  margin-top: 11px;
+  margin-bottom: 5px;
 }
 
 .header__right {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
 }
 
-.header__logo {
-  height: 30px;
-}
-
-.header__date-and-location {
-  font-weight: bold;
-}
-
-.header__add-clothes-btn {
-  font-weight: bold;
-  background: none;
+.header__button {
+  font: inherit;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  padding: 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
   border: none;
+  background: none;
   cursor: pointer;
 }
 
-/* Add this class for profile link */
-.header__profile-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: inherit;
+.header__username {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  padding: 0;
+  margin-top: 8px;
+  margin-bottom: 7px;
 }
-
-.header__user-name {
-  font-weight: bold;
-  margin: 0; /* Remove default paragraph margin */
-}
-
 .header__avatar {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  object-fit: cover;
+  margin-top: 8px;
+  margin-bottom: 7px;
+  margin-left: -8px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .header__center,
+  .header__right {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .header__logo {
+    width: 72px;
+  }
+
+  .header__date,
+  .header__location,
+  .header__username,
+  .header__button {
+    font-size: 18px;
+  }
 }

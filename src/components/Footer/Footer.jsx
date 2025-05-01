@@ -1,9 +1,11 @@
+import React from "react";
 import "./Footer.css";
 
 function Footer() {
   return (
     <footer className="footer">
-      <p>Developed by Alireza Minagar in {new Date().getFullYear()}</p>
+      <p className="footer__text">Developed by Lindsay Stapleton</p>
+      <p className="footer__year">2025</p>
     </footer>
   );
 }
