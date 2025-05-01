@@ -26,5 +26,3 @@ This project was built to match the official Figma design provided in the Sprint
 ## 🌐 Live Demo
 
 👉 [**View the Deployed App**](https://lstapleton02.github.io/se_project_react/)
-
-## 📁 Getting Started (Optional)
