@@ -28,12 +28,3 @@ This project was built to match the official Figma design provided in the Sprint
 👉 [**View the Deployed App**](https://lstapleton02.github.io/se_project_react/)
 
 ## 📁 Getting Started (Optional)
-
-To run locally:
-
-```bash
-git clone https://github.com/vmpgonzalez/se_project_react.git
-cd se_project_react
-npm install
-npm run dev
-```
