@@ -9,20 +9,22 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 
 function App() {
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState({});
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   useEffect(() => {
-    getWeatherData().then((data) => {
-      if (data) {
+    getWeatherData()
+      .then((data) => {
         setWeatherData(data);
-      }
-    });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     setClothingItems(defaultClothingItems);
   }, []);
@@ -34,7 +36,7 @@ function App() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setSelectedItem(null);
+    setSelectedItem({});
   };
 
   const handleAddClick = () => {
@@ -71,12 +73,12 @@ function App() {
             handleCloseAddModal();
           }}
         >
-          <label className="modal__label modal__label-name">
+          <label htmlFor="name" className="modal__label modal__label-name">
             Name
             <input type="text" name="name" required placeholder="Name" />
           </label>
 
-          <label className="modal__label modal__label-image">
+          <label htmlFor="image" className="modal__label modal__label-image">
             Image
             <input type="url" name="link" required placeholder="Image URL" />
           </label>

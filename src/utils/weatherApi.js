@@ -22,12 +22,11 @@ export const getWeatherData = async () => {
       weatherType: defineWeatherType(temperature),
     };
   } catch (error) {
-    console.error("Error fetching weather data:", error);
-    return null;
+    return Promise.reject(`Error: ${error}`);
   }
 };
 
-export const defineWeatherType = (temperature) => {
+const defineWeatherType = (temperature) => {
   if (temperature >= 86) {
     return "hot";
   } else if (temperature >= 66) {

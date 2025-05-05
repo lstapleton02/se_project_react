@@ -13,7 +13,9 @@ function Header({ weatherData, onAddClick }) {
       <div className="header__left">
         <img src={logo} alt="WTWR Logo" className="header__logo" />
         <div className="header__location-info">
-          <p className="header__date">{currentDate}, Jacksonville, FL</p>
+          <p className="header__date">
+            {currentDate},{weatherData.city}
+          </p>
         </div>
       </div>
 
