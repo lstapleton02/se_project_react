@@ -5,6 +5,9 @@ const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${location.
 export const getWeatherData = async () => {
   try {
     const response = await fetch(API_URL);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const data = await response.json();
 
     const temperature = Math.round(data.main.temp);

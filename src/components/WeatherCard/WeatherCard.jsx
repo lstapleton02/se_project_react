@@ -2,7 +2,13 @@ import React from "react";
 import "./WeatherCard.css";
 
 function WeatherCard({ weatherData }) {
-  if (!weatherData) {
+  if (
+    !weatherData ||
+    !weatherData.weatherCondition ||
+    !weatherData.temperature ||
+    !weatherData.sunrise ||
+    !weatherData.sunset
+  ) {
     return <div className="weather-card">Loading weather...</div>;
   }
 
